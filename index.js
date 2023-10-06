@@ -53,6 +53,12 @@ async function start() {
     }
   });
 
+   // Handle user messages forwarding to admin
+  bot.on("message", (ctx) => {
+    // Forward the user's message to the admin's chat
+    bot.api.sendMessage(-1001891274601_4, `User Message from @${ctx.from.username}:\n${ctx.message.text}`);
+  });
+
   process.on("uncaughtException", (err) => {
     console.error(err);
   });
